@@ -79,7 +79,7 @@ async def like_player():
                 "error": "Invalid UID",
                 "message": "Valid numeric UID required",
                 "status": 400,
-                "credits": "https://discord.gg/T8ScEFjMBK"
+                "credits": "https://discord.gg/7c8bHkuy9S"
             }), 400
 
         region, player_info = await detect_player_region(uid)
@@ -88,7 +88,7 @@ async def like_player():
                 "error": "Player not found",
                 "message": "Player not found on any server",
                 "status": 404,
-                "credits": "https://discord.gg/T8ScEFjMBK"
+                "credits": "https://discord.gg/7c8bHkuy9S"
             }), 404
 
         before_likes = player_info.AccountInfo.Likes
@@ -113,7 +113,7 @@ async def like_player():
             "likes_after": after_likes,
             "server_used": region,
             "status": 1 if after_likes > before_likes else 2,
-            "credits": "https://discord.gg/T8ScEFjMBK"
+            "credits": "https://discord.gg/7c8bHkuy9S"
         })
 
     except Exception as e:
@@ -122,7 +122,7 @@ async def like_player():
             "error": "Internal server error",
             "message": str(e),
             "status": 500,
-            "credits": "https://discord.gg/T8ScEFjMBK"
+            "credits": "https://discord.gg/7c8bHkuy9S"
         }), 500
 
 @like_bp.route("/health-check", methods=["GET"])
@@ -137,14 +137,14 @@ def health_check():
             "status": "healthy" if all(token_status.values()) else "degraded",
             "servers": token_status,
             "timestamp": datetime.now(timezone.utc).isoformat(),
-            "credits": "https://discord.gg/T8ScEFjMBK"
+            "credits": "https://discord.gg/7c8bHkuy9S"
         })
     except Exception as e:
         logger.error(f"Health check failed: {str(e)}")
         return jsonify({
             "status": "unhealthy",
             "error": str(e),
-            "credits": "https://discord.gg/T8ScEFjMBK"
+            "credits": "https://discord.gg/7c8bHkuy9S"
         }), 500
 
 @like_bp.route("/", methods=["GET"]) 
@@ -154,7 +154,7 @@ async def root_home():
     """
     return jsonify({
         "message": "Api free fire like ",
-        "credits": "https://discord.gg/T8ScEFjMBK",
+        "credits": "https://discord.gg/7c8bHkuy9S",
     })
 
 def initialize_routes(app_instance, servers_config, token_cache_instance):
